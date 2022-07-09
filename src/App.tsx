@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useAppSelector } from './hooks/useAppSelector';
+import { Views } from './features/viewSlice';
+import EnterView from './views/EnterView';
+import ListenerView from './views/ListenerView';
+import PublisherView from './views/PublisherView';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const view: Views = useAppSelector(state => state.view);
+
+    function getView() {
+        switch (view) {
+            case Views.Enter:
+                return <EnterView />;
+
+            case Views.Listener:
+                return <ListenerView />;
+
+            case Views.Publisher:
+                return <PublisherView />;
+        }
+    }
+
+    return (
+        <div className='App'>
+            <div id='logo-block'>
+                <img src='limq-logo.svg' alt='' />
+            </div>
+
+            {getView()}
+        </div>
+    );
 }
 
 export default App;

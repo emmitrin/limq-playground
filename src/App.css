@@ -1,38 +1,47 @@
+@import '~antd/dist/antd.css';
+
+#credentials-enter {
+    margin-top: 24px;
+}
+
+#intro-block {
+    margin-top: 50px;
+}
+
+#logo-block {
+    width: 128px;
+    height: 128px;
+    margin: 12px auto auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .App {
+        width: 95%;
+    }
+}
+
+@media only screen and (min-width: 1122px) {
+    .App {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1123px) {
+    .App {
+        width: 50%;
+    }
+}
+
 .App {
-  text-align: center;
+    margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.fade .ant-space-item .ant-card {
+    transition: all 0.4s ease-out;
+    opacity: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fade .ant-space-item div.show, .fade .ant-space-item.show {
+    opacity: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
