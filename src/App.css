@@ -1,17 +1,13 @@
 @import '~antd/dist/antd.css';
 
-#credentials-enter {
-    margin-top: 24px;
-}
-
 #intro-block {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #logo-block {
-    width: 128px;
+    width: 256px;
     height: 128px;
-    margin: 12px auto auto;
+    margin: 30px auto auto;
 }
 
 @media only screen and (max-width: 600px) {
@@ -45,3 +41,6 @@
     opacity: 1;
 }
 
+.ant-alert, .ant-alert-error {
+    height: 32px;
+}

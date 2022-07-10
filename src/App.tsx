@@ -25,7 +25,7 @@ function App() {
     return (
         <div className='App'>
             <div id='logo-block'>
-                <img src='limq-logo.svg' alt='' />
+                <img src='limq-for-white-theme.svg' alt='' />
             </div>
 
             {getView()}

@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import channelReducer from './features/channelSlice';
 import viewReducer from './features/viewSlice';
 import listenerReducer from './features/listenerSlice';
+import publisherReducer from './features/publisherSlice';
 
 const store = configureStore({
     reducer: {
         channel: channelReducer,
         view: viewReducer,
         messages: listenerReducer,
+        publisher: publisherReducer,
     },
 });
 
