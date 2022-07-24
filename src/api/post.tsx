@@ -1,4 +1,4 @@
-import { baseURL } from '../client';
+import { ApiConfig } from '../client';
 
 export enum APIPostResponse {
     Ok,
@@ -33,7 +33,7 @@ interface PostResponse {
 }
 
 export default async function PostToChannel(key: string, data: string | ArrayBuffer): Promise<APIPostResponse> {
-    const endpoint = `http://${baseURL}/post${key}`;
+    const endpoint = `${ApiConfig.httpPrefix}/post${key}`;
 
     const messageType = (typeof data === 'string') ? 'text' : 'binary';
 

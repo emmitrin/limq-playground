@@ -30,7 +30,7 @@ export default function EnterView() {
         <>
             <div id='credentials-enter'>
                 <Row>
-                    <Col span={21}>
+                    <Col lg={21} xs={18} xxl={21} xl={21}>
                         <Input size='large'
                                autoFocus
                                status={key.length > 0 && key.length !== 32 ? 'error' : ''}
@@ -40,7 +40,7 @@ export default function EnterView() {
                         />
                     </Col>
 
-                    <Col span={3}>
+                    <Col lg={3} xs={6} xxl={3} xl={3}>
                         <Button
                             style={{ marginLeft: '8px', width: '100%' }}
                             size='large'

@@ -1,5 +1,5 @@
 import { Button, Divider, Space, Typography } from 'antd';
-import { baseURL } from '../client';
+import { ApiConfig } from '../client';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import { useAppDispatch, useAppSelector } from '../hooks/useAppSelector';
 import { useEffect } from 'react';
@@ -8,14 +8,12 @@ import { Message, MessageType } from '../Message';
 import { clearMessages, pushMessage } from '../features/listenerSlice';
 import { ClearOutlined } from '@ant-design/icons';
 
-const wsURL = `ws://${baseURL}`;
-
 export default function ListenerView() {
     const key = useAppSelector(state => state.channel.key);
     const messages = useAppSelector(state => state.messages.messagesHistory);
     const dispatch = useAppDispatch();
 
-    const endpoint = `${wsURL}/ws_listen${key}`;
+    const endpoint = `${ApiConfig.wsPrefix}/ws_listen${key}`;
 
     const { lastMessage, readyState } = useWebSocket(endpoint, { share: true });
 
@@ -28,17 +26,17 @@ export default function ListenerView() {
                 const message: Message = {
                     type: MessageType.Binary,
                     data: ab,
-                    timestamp: '' // todo
-                }
+                    timestamp: '', // todo
+                };
 
                 dispatch(pushMessage(message));
             });
-        } else if (typeof m.data === "string") {
+        } else if (typeof m.data === 'string') {
             const message: Message = {
                 type: MessageType.Text,
                 data: m.data as string,
-                timestamp: '' // todo
-            }
+                timestamp: '', // todo
+            };
 
             dispatch(pushMessage(message));
         } else {
@@ -51,7 +49,7 @@ export default function ListenerView() {
 
         switch (rs) {
             case ReadyState.UNINSTANTIATED:
-                statusText = 'Unknown error while instantiating'
+                statusText = 'Unknown error while instantiating';
                 return;
 
             case ReadyState.CONNECTING:
@@ -62,18 +60,18 @@ export default function ListenerView() {
                 break;
 
             case ReadyState.CLOSING:
-                statusText = 'Closing the connection'
+                statusText = 'Closing the connection';
                 break;
 
             case ReadyState.CLOSED:
-                statusText = 'Unable to establish the connection. Is the access key valid?'
+                statusText = 'Unable to establish the connection. Is the access key valid?';
                 break;
         }
 
         const msg: Message = {
             type: MessageType.Service,
             data: statusText,
-            timestamp: '' // todo
+            timestamp: '', // todo
         };
 
         dispatch(pushMessage(msg));
@@ -86,7 +84,7 @@ export default function ListenerView() {
 
     useEffect(() => {
         parseReadyState(readyState);
-    }, [readyState])
+    }, [readyState]);
 
     return (
         <>

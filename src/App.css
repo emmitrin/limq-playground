@@ -10,24 +10,6 @@
     margin: 30px auto auto;
 }
 
-@media only screen and (max-width: 600px) {
-    .App {
-        width: 95%;
-    }
-}
-
-@media only screen and (min-width: 1122px) {
-    .App {
-        width: 70%;
-    }
-}
-
-@media only screen and (min-width: 1123px) {
-    .App {
-        width: 50%;
-    }
-}
-
 .App {
     margin: auto;
 }
@@ -43,4 +25,8 @@
 
 .ant-alert, .ant-alert-error {
     height: 32px;
+}
+
+.App {
+    width: 70%;
 }
