@@ -11,7 +11,7 @@ import {
     setTextFieldStatus,
 } from '../features/publisherSlice';
 import PublisherStatusBlock from '../components/PublisherStatusBlock';
-import PostToChannel, { APIPostResponse } from '../api/post';
+import PublishToChannel, { APIPostResponse } from '../api/publish';
 import { RcFile } from 'antd/es/upload';
 import { useState } from 'react';
 
@@ -74,7 +74,7 @@ export default function PublisherView() {
             return;
         }
 
-        PostToChannel(key, text)
+        PublishToChannel(key, text)
             .then(response => handleResponse(response));
     }
 
@@ -95,7 +95,7 @@ export default function PublisherView() {
         }
 
         file.arrayBuffer().then(ab => {
-            PostToChannel(key, ab).then(response => handleResponse(response));
+            PublishToChannel(key, ab).then(response => handleResponse(response));
         });
     }
 

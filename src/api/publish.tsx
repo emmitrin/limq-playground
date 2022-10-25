@@ -32,8 +32,8 @@ interface PostResponse {
     'status_code': number;
 }
 
-export default async function PostToChannel(key: string, data: string | ArrayBuffer): Promise<APIPostResponse> {
-    const endpoint = `${ApiConfig.httpPrefix}/post${key}`;
+export default async function PublishToChannel(key: string, data: string | ArrayBuffer): Promise<APIPostResponse> {
+    const endpoint = `${ApiConfig.httpPrefix}/publish${key}`;
 
     const messageType = (typeof data === 'string') ? 'text' : 'binary';
 
